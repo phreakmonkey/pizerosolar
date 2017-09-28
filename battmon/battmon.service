@@ -1,0 +1,17 @@
+[Unit]
+Description=Battmon Service
+After=syslog.target
+
+[Service]
+Type=simple
+User=root
+Group=users
+WorkingDirectory=/home/pi/battmon
+ExecStart=/home/pi/battmon/battmon.py
+StandardOutput=syslog
+StandardError=syslog
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

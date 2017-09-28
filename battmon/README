@@ -1,0 +1,21 @@
+battmon.py
+
+Simple script to record the battery voltage info and shutdown the pi zero
+if we receive instruction to from the battery monitor.
+
+Requires the Arduino Lowpower Battery Monitor described here:
+  https://github.com/phreakmonkey/pizerosolar/
+
+Must be run as root for the shutdown command to work.
+
+I've also included "battmon.service" to run this automatically under systemd.
+To install:
+  - place battmon.py in /home/pi/battmon/
+  - place battmon.service in /etc/systemd/system/
+  - run "sudo systemctl enable battmon"
+  - start the service with "sudo service battmon start"
+
+Look for the (every 16 seconds) log info in /home/pi/battmon/battmon.log
+Errors or shutdown info will be written into /var/log/syslog by systemd
+
+
