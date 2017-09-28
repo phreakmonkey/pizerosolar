@@ -18,3 +18,5 @@ Raspberry Pi Zero.
 - 3.7v Lipo 1S battery >= 8000mAh
   - Ex: http://www.ebay.com/itm/1-3-7V-8000-mAh-Polymer-Li-Lipo-Battery-GPS-PSP-PDA-ipod-DVD-Tablet-PC7565121-/282379380717
 
+### Schematic diagram
+![Schematic Diagram](https://raw.githubusercontent.com/phreakmonkey/pizerosolar/master/pizerosolar-schematic.png)
