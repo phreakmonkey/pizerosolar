@@ -1,11 +1,11 @@
 # pizerosolar
 
-### Summary
+## Summary
 Solar powered Raspberry Pi Zero setup, including an external battery voltage
 monitor and associated automation to handle clean shutdown and restart of the
 Raspberry Pi Zero.
 
-### Hardware Used
+## Hardware Used
 - Raspberry Pi Zero W
 - Arduino Pro Mini 5V/16MHz
 - TP4056 based 1S Lipo Battery Charger Module
@@ -18,5 +18,17 @@ Raspberry Pi Zero.
 - 3.7v Lipo 1S battery >= 8000mAh
   - Ex: http://www.ebay.com/itm/1-3-7V-8000-mAh-Polymer-Li-Lipo-Battery-GPS-PSP-PDA-ipod-DVD-Tablet-PC7565121-/282379380717
 
-### Schematic diagram
+## Schematic diagram
 ![Schematic Diagram](https://raw.githubusercontent.com/phreakmonkey/pizerosolar/master/pizerosolar-schematic.png)
+
+## Software:
+### Lowpower-Battery-Monitor
+Arduino Pro Micro code to handle battery management.
+- Reports voltage to RaspberryPi via GPIO TTL Serial pins every 16 seconds
+- Keeps track of "run" state to cleanly shut-down and reboot pi
+- Toggles the onboard "RUN" pin of the rPi CPU to wake & boot rPi after shutdown
+
+### battmon.py
+Battery voltage monitor and logger client for rPi
+- Simple module to log incoming voltage reports from the Arduino module
+- Handles shutdown message
