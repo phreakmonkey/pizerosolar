@@ -17,8 +17,8 @@
 // POWOFF = When to instruct rPi to shutdown.
 // POWON = What voltage level to reset rPi if POWOFF had been reached prior
 // Don't set these too close together to avoid "whipsawing" from voltage sag
-#define POWOFF 325
-#define POWON 350
+#define POWOFF 335
+#define POWON 370
 
 const int battPin = A3; // Connect directly to 3.7V battery (+) terminal
 const int resetPin = 9; // RESET - connect to square "RUN" pin on Pi Zero
@@ -28,6 +28,9 @@ int voltage = 0;
 bool run = true;
 
 void setup() {
+  pinMode(resetPin, OUTPUT);
+  digitalWrite(resetPin, LOW); // Reset in case we're cold booting
+  delay(100);
   pinMode(resetPin, INPUT);  // tri-state float for run
   Serial.begin(57600);
 }
@@ -44,7 +47,7 @@ void loop() {
       run = true;
       pinMode(resetPin, OUTPUT);
       digitalWrite(resetPin, LOW);  // Ground resetPin to reboot rPi
-      delay(50);
+      delay(100);
       pinMode(resetPin, INPUT);  // tri-state float for run
   }
   Serial.print("run: ");
